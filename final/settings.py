@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_on_heroku
 
+django_on_heroku.settings(locals())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dbfiles',
 ]
 
 MIDDLEWARE = [
@@ -86,6 +89,8 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = 'tvwatch.User'
+
+MEDIA_URL = '/media/'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

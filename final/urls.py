@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from dbfiles.urls import dbfiles_url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("tvwatch.urls"))
+    path("", include("tvwatch.urls")),
+    dbfiles_url()
 ]
