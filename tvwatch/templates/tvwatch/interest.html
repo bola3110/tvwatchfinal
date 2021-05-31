@@ -1,0 +1,86 @@
+{% extends "tvwatch/layout.html" %}
+{% load static %}
+
+{%block title%}
+    Interest form
+{%endblock%}
+
+{% block body %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'tvwatch/css/interest.css' %}" />
+    <script src="{% static 'tvwatch/interest.js' %}" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+  </head>
+  <section class="interest">
+    <div class="background">
+      <h2>Please fill in you're interest to provide you reccomended tvshows</h2>
+      <br>
+      <form action="{% url 'add_interest' %}" method="POST" class="row g-3">
+        {% csrf_token %}
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">Genres</label>
+          <select id="inputState" class="form-select" name="genre" required>
+            <option selected>Choose...</option>
+            <option value="10759">Action & Adventure</option>
+            <option value="35">Comedy</option>
+            <option value="16">Animation</option>
+            <option value="99">Documentary</option>
+            <option value="18">Drama</option>
+            <option value="10751">Family</option>
+            <option value="10762">Kids</option>
+            <option value="9648">Mystery</option>
+            <option value="10763">News</option>
+            <option value="10764">Reality</option>
+            <option value="10765">Sci-Fi & Fantasy</option>
+            <option value="10766">Soap</option>
+            <option value="10767">Talk</option>
+            <option value="10768">War & Politics</option>
+            <option value="37">Western</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">Spoken language</label>
+          <select id="inputState" class="form-select" name="language" required>
+            <option selected>Choose...</option>
+            <option value="nl">Dutch</option>
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="ar">Arabic</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">Rating</label>
+          <select id="inputState" class="form-select" name="vote_average" required>
+            <option selected>Choose...</option>
+            <option value="9.0">Above 9</option>
+            <option value="8.0">Above 8</option>
+            <option value="7.0">Above 7</option>
+            <option value="6.0">Above 6</option>
+            <option value="5.0">Above 5</option>
+            <option value="4.0">Above 4</option>
+            <option value="3.0">Above 3</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">Release Date</label>
+          <select id="inputState" class="form-select" name="release_year" required>
+            <option selected>Choose...</option>
+            <option value="2020-01-01">2020</option>
+            <option value="2019-01-01">2019</option>
+            <option value="2018-01-01">2018</option>
+            <option value="2017-01-01">2017</option>
+            <option value="2016-01-01">2016</option>
+            <option value="2015-01-01">2015</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>  
+    </div>
+  </section>
+  <script src="{% static 'tvwatch/main.js' %}"></script>
+  {% endblock %}

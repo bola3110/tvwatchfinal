@@ -1,0 +1,95 @@
+/* tv detail*/
+
+.detail{
+    background: url("../images/besttvshows.jpg") center no-repeat;
+    background-size: cover;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    color: white;
+    background-color: black;
+}
+
+.tvshow-detail{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.tvshow-detailrow{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.tvshow-detailrow img{
+    height: 100%;
+    
+}
+.tvshow-detailcolumn{
+    width: 100%;
+    max-width: 500px;
+}
+
+.tvshow-detailcolumn iframe{
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    border: 0;
+}
+
+.tvshow-detail h1{
+    text-align: center;
+    font-size:72px;
+    background-color: #373b69;
+    color: white;
+    max-width: 1000px;
+}
+
+.tvshow-detail span {
+    background-color: #ff0000;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+    margin-left: 20px;
+}
+
+.tvshow-detail span.green {
+    color: rgb(39, 189, 39);
+}
+
+.tvshow-detail span.orange {
+    color: orange;
+}
+
+.tvshow-detail span.red {
+    color: rgb(189, 42, 42);
+}
+
+.detailoverview{
+    background-color: #373b69;
+    max-width: 1000px;
+    padding: 12px 10px;
+    text-align: center;
+
+}
+.detailbutton{
+	border-radius: 5px;
+	border: 1px solid #ff0000;
+	background-color: #f60000;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 10px;
+	letter-spacing: 1px;
+	text-transform: none;
+}
+
+@media screen and (max-width:1800px){
+    .tvshow-detail h1{
+        max-width: 500px;
+        font-size:36px;
+    }
+
+    .detailoverview{
+        max-width: 500px;
+    }
+}

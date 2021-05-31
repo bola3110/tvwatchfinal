@@ -1,0 +1,49 @@
+{% extends "tvwatch/layout.html" %}
+{% load static %}
+
+{%block title%}
+    My List
+{%endblock%}
+
+{% block body %}
+    <link href="{% static 'tvwatch/css/tvshow.css' %}" rel="stylesheet">
+    <section>
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link rel="stylesheet" href="{% static 'tvwatch/styles.css' %}" />
+        </head>
+        <body class="body_tvshow">
+            <h1>My List</h1>
+            <main>
+                {% for show in mytvshows %}
+                <div class="tvshow">
+                    <img src="https://image.tmdb.org/t/p/w1280{{show.poster_path}}" alt="{{name}}"/>
+                    <div class="tvshow-info">
+                        <h3>{{show.name}}</h3>
+                        <span>{{show.vote_average}}</span>
+                    </div>
+                    <div class="overview">
+                        <h3>Overview:</h3>
+                        {{show.overview}}
+                        <form action="{% url 'detail_view' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="tvid" value="{{show.tvid}}" >
+                            <input type="hidden" name="name" value="{{show.name}}" >
+                            <button class="tvshow-button" type="submit" >More Detail</button>
+                        </form>
+                        <br>
+                        <form action="{% url 'remove_mylist' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="name" value="{{show.name}}" >
+                            <input type="hidden" name="tvid" value="{{show.tvid}}" >
+                            <button class="tvshow-button" type="submit" >Remove from List</button>
+                        </form>
+                    </div>
+                </div> 
+                {% endfor %}
+            </main>
+        </body>
+    </section>
+    <script src="{% static 'tvwatch/main.js' %}"></script>
+{%endblock%}

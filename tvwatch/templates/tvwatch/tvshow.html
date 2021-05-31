@@ -1,0 +1,39 @@
+{% extends "tvwatch/layout.html" %}
+{% load static %}
+
+{%block title%}
+    tv-shows
+{%endblock%}
+
+{% block body %}
+<link href="{% static 'tvwatch/css/tvshow.css' %}" rel="stylesheet">
+<section>
+    <body class="body_tvshow">
+        <h1>Reccomended Tv-shows</h1>
+        <main>
+            {% for show in tvshows %}
+                <div class="tvshow">
+                    <img src="https://image.tmdb.org/t/p/w1280{{show.poster_path}}" alt="{{name}}"/>
+                    <div class="tvshow-info">
+                        <h3>{{show.name}}</h3>
+                        <span>{{show.vote_average}}</span>
+                    </div>
+                    
+                    <div class="overview">
+                        <h3>Overview:</h3>
+                        {{show.overview}}
+                        <form action="{% url 'detail_view' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="tvid" value="{{show.tvid}}" >
+                            <input type="hidden" name="name" value="{{show.name}}" >
+                            <button class="tvshow-button" type="submit" >More Detail</button>
+                        </form>
+                        
+                    </div>
+                </div> 
+            {% endfor %}
+        </main>
+    </body>
+</section>
+<script src="{% static 'tvwatch/main.js' %}"></script>
+{%endblock%}

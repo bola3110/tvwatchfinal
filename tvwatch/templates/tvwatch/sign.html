@@ -1,0 +1,102 @@
+{% extends "tvwatch/layout.html" %}
+{% load static %}
+
+{%block title%}
+    signIn & signUp
+{%endblock%}
+
+{% block body %}
+    <link href="{% static 'tvwatch/css/sign.css' %}" rel="stylesheet">
+    <section class="sign">
+        <div class="sign_container" id="sign_container">
+            <div class="form-container sign-up-container">
+                <form action="{% url 'register' %}" method="POST" novalidate>
+                    {% csrf_token %}
+                    <h1>Create Account</h1>
+                    <input class="form-control" autofocus type="text" name="username" placeholder="Username" required>
+                    <input class="form-control" type="email" name="email" placeholder="Email Address" required>
+                    <input class="form-control" type="password" name="password" placeholder="Password" required>
+                    <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password" required>
+                    <br>
+                    <button type="submit" value="Register">Sign Up</button>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <h1>Sign in</h1>
+                    <br>
+                    <input autofocus class="form-control" type="text" name="username" placeholder="Username" required>
+                    <input class="form-control" type="password" name="password" placeholder="Password" required>
+                    <a href="#">Forgot your password?</a>
+                    <button type="submit" value="Login">Sign In</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="ghost" id="signIn">Sign In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </section>
+    <footer>
+        <div class="container">
+            <div class="back-to-top">
+                <a href="#hero"><i class="fas fa-chevron-up"></i></a>
+            </div>
+            <div class="footer-content">
+                <div class="footer-content-about animate-top">
+                    <h4>About TVWatch</h4>
+                    <div class="asterisk"><i class="fas fa-asterisk"></i></div>
+                    <p>
+                        We are a dutch company who created this site to help people around 
+                        the world to make a perfect match in tv-shows based on their interest
+                    </p>
+                </div>
+                <div class="footer-content-divider animate-bottom">
+                    <div class="social-media">
+                        <h4>Follow along</h4>
+                        <ul class="social-icons">
+                            <li>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-pinterest"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="newsletter-container">
+                        <h4>Newsletter</h4>
+                        <form action="{% url 'newsletter' %}" class="newsletter-form" method="POST">
+                            {% csrf_token %}
+                            <input type="text" class="newsletter-input" name="newsletter" placeholder="Your email address..." required>
+                            <button class="newsletter-btn" type="submit" onClick="conf()">
+                                <i class="fas fa-envelope"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="{% static 'tvwatch/sign.js' %}"></script>
+    </footer>
+    <script src="{% static 'tvwatch/main.js' %}"></script>
+{% endblock %}

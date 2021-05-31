@@ -1,0 +1,137 @@
+/* Tv-shows from API*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+.body_tvshow {
+    background-size: cover;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    background-color: black;
+}
+
+.body_tvshow h1{
+    text-align: center;
+    font-size: 72px;
+    color: gold;
+}
+
+.header{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,.5), transparent);
+}
+
+.search {
+    background-color: white;
+    border: 2px solid #ff0000;
+    border-radius: 50px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.search::placeholder {
+    color: #000000;
+}
+
+.search:focus {
+    background-color: #f60000;
+    outline: none;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tvshow {
+    background-color: #373b69;
+    border-radius: 3px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    margin: 1rem;
+    width: 300px;
+}
+
+.tvshow img {
+    width: 100%;
+}
+
+.tvshow-info {
+    color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 1rem;
+    letter-spacing: 0.5px;
+}
+
+.tvshow-info h3 {
+    margin: 0;
+}
+
+.tvshow-info span {
+    background-color: #22254b;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+}
+
+.tvshow-info span.green {
+    color: rgb(39, 189, 39);
+}
+
+.tvshow-info span.orange {
+    color: orange;
+}
+
+.tvshow-info span.red {
+    color: rgb(189, 42, 42);
+}
+
+.overview {
+    background-color: #fff;
+    padding: 2rem;
+    position: absolute;
+    max-height: 100%;
+    overflow: auto;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: translateY(101%);
+    transition: transform 0.3s ease-in;
+}
+
+.overview button{
+    font-size: 100%;
+    font-family: inherit;
+    border: 0;
+    padding: 0;
+}
+.tvshow-button{
+	background-color: white;
+    border: white;
+	color: red;
+	font-size: 8px;
+	padding: 6px 10px;
+	letter-spacing: 1px;
+	text-transform: none;
+    text-align: center;
+}
+
+.overview h3 {
+    margin-top: 0;
+}
+
+.tvshow:hover .overview {
+    transform: translateY(0);
+}

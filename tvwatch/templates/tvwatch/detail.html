@@ -1,0 +1,73 @@
+{% extends "tvwatch/layout.html" %}
+{% load static %}
+
+{%block title%}
+    Tv show detail
+{%endblock%}
+
+{% block body %}
+<link href="{% static 'tvwatch/css/tvshow.css' %}" rel="stylesheet">
+<link href="{% static 'tvwatch/css/detail.css' %}" rel="stylesheet">
+<section class="detail">
+    {% for show in tvshows %}
+        <div class="tvshow-detail">
+            <h1>{{show.name}}</h1>
+            <div class="tvshow-detailrow">
+                <div class="tvshow-detailcolumn">
+                <img src="https://image.tmdb.org/t/p/w1280/{{show.poster_path}}" alt="Snow" style="width:100%">
+                </div>
+                <div class="tvshow-detailcolumn">
+                    <iframe src="http://www.youtube.com/embed/{{youtubeurl}}" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="detailoverview">
+                <h2>{{show.name}}<span>{{show.vote_average}}</span></h2>
+                <br>
+                <p>
+                    {{show.overview}}
+                </p>
+                <br>
+                <form action="{% url 'add_mylist' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="name" value="{{show.name}}" >
+                    <input type="hidden" name="tvid" value="{{show.tvid}}" >
+                    <button type="submit" class="detailbutton">Add to my list</button>
+                </form>
+            </div>
+        </div>
+    {%endfor%}
+</section>
+<br>
+<section>
+    <body class="body_tvshow">
+        <h1>Similar Tv-shows</h1>
+        <main>
+            {% for show in rec_tvshows %}
+                <div class="tvshow">
+                    <img src="https://image.tmdb.org/t/p/w1280{{show.poster_path}}" alt="{{name}}"/>
+                    <div class="tvshow-info">
+                        <h3>{{show.name}}</h3>
+                        <span>{{show.vote_average}}</span>
+                    </div>
+                    
+                    <div class="overview">
+                        <h3>Overview:</h3>
+                        {{show.overview}}
+                        <form action="{% url 'detail_view' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="tvid" value="{{show.tvid}}" >
+                            <input type="hidden" name="name" value="{{show.name}}" >
+                            <input type="hidden" name="original_language" value="{{show.original_language}}" >
+                            <input type="hidden" name="vote_average" value="{{show.vote_average}}" >
+                            <input type="hidden" name="first_air_date" value="{{show.first_air_date}}" >
+                            <input type="hidden" name="genre_ids" value="{{show.genre_ids}}" >
+                            <button class="tvshow-button" type="submit" >More Detail</button>
+                        </form>
+                    </div>
+                </div> 
+            {% endfor %}
+        </main>
+    </body>
+</section>
+<script src="{% static 'tvwatch/main.js' %}"></script> 
+{%endblock%}

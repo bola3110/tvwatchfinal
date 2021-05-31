@@ -1,0 +1,21 @@
+/* interest form*/
+.interest{
+    font-family: 'Montserrat', sans-serif;
+	background: url("../images/besttvshows.jpg") center no-repeat;
+    background-size: cover;
+	display: flex;
+    flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: -20px 0 50px;
+  }
+
+  .interest .background{
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    padding: 10px 45px;
+    border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+  }
